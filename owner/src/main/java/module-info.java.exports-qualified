@@ -1,0 +1,3 @@
+module owner {
+	exports owner to intruder;
+}

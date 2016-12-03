@@ -1,0 +1,4 @@
+module owner {
+	exports owner;
+	opens owner to intruder;
+}
