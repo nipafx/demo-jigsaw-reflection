@@ -18,14 +18,14 @@ jar9 --create \
 echo ""
 echo " > running all in unnamed module"
 javac9 \
-	-p mods \
+	--module-path mods \
 	-d classes/owner \
 	$(find owner -name '*.java')
 jar9 --create \
 	--file classes/owner.jar \
 	-C classes/owner .
 java9 \
-	-p mods \
+	--module-path mods \
 	-cp classes/owner.jar:mods/intruder.jar \
 	intruder.Intruder
 rm -r classes/*
@@ -33,22 +33,22 @@ rm -r classes/*
 echo ""
 echo " > running owner in unnamed module"
 javac9 \
-	-p mods \
+	--module-path mods \
 	-d classes/owner \
 	$(find owner -name '*.java')
 jar9 --create \
 	--file classes/owner.jar \
 	-C classes/owner .
 java9 \
-	-p mods \
+	--module-path mods \
 	-cp classes/owner.jar \
-	-m intruder
+	--module intruder
 rm -r classes/*
 
 echo ""
 echo " > running owner as automatic module"
 javac9 \
-	-p mods \
+	--module-path mods \
 	-d classes/owner \
 	$(find owner -name '*.java')
 jar9 --create \

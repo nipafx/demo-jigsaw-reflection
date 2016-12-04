@@ -2,7 +2,7 @@
 
 cp owner/src/main/java/module-info.java{.$1,}
 javac9 \
-	-p mods \
+	--module-path mods \
 	-d classes/owner \
 	$(find owner -name '*.java')
 rm owner/src/main/java/module-info.java

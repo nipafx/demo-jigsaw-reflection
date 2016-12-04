@@ -1,6 +1,6 @@
 #!/bin/bash
 
 java9 \
-	-p mods \
+	--module-path mods \
 	--add-modules owner \
-	-m intruder
+	--module intruder
