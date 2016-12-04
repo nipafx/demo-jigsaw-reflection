@@ -81,3 +81,12 @@ echo ""
 echo " > running owner as named module; module open"
 ./compileWith.sh "open-module"
 ./run.sh
+
+echo ""
+echo " > running owner as named module with --add-opens"
+./compileWith.sh "encapsulated"
+java9 \
+	--module-path mods \
+	--add-modules owner \
+	--add-opens owner/owner=intruder \
+	--module intruder
