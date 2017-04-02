@@ -26,7 +26,7 @@ jar9 --create \
 java9 \
 	-cp classes/owner.jar:mods/intruder.jar \
 	intruder.Intruder
-rm -r classes/*
+./delete-owner.sh
 
 echo ""
 echo " > running owner in unnamed module"
@@ -40,7 +40,7 @@ java9 \
 	--module-path mods \
 	-cp classes/owner.jar \
 	--module intruder
-rm -r classes/*
+./delete-owner.sh
 
 echo ""
 echo " > running owner as automatic module"
@@ -52,32 +52,37 @@ jar9 --create \
 	--file mods/owner.jar \
 	-C classes/owner .
 ./run.sh
-rm -r classes/* mods/owner.jar
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module; package exported"
 ./compileWith.sh "exports"
 ./run.sh
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module; package exported to intruder"
 ./compileWith.sh "exports-qualified"
 ./run.sh
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module; package open"
 ./compileWith.sh "opens"
 ./run.sh
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module; package open for intruder"
 ./compileWith.sh "opens-qualified"
 ./run.sh
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module; module open"
 ./compileWith.sh "open-module"
 ./run.sh
+./delete-owner.sh
 
 echo ""
 echo " > running owner as named module with --add-opens"
@@ -87,3 +92,4 @@ java9 \
 	--add-modules owner \
 	--add-opens owner/owner=intruder \
 	--module intruder
+./delete-owner.sh
