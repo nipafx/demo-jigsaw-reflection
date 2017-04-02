@@ -93,3 +93,24 @@ java9 \
 	--add-opens owner/owner=intruder \
 	--module intruder
 ./delete-owner.sh
+
+echo ""
+echo " > running with --permit-illegal-access"
+./compileWith.sh "encapsulated"
+java9 \
+	--module-path mods \
+	--add-modules owner \
+	--permit-illegal-access \
+	--module intruder
+./delete-owner.sh
+
+echo ""
+echo " > running intruder in unnamed module with --permit-illegal-access"
+./compileWith.sh "encapsulated"
+java9 \
+	--class-path mods/intruder.jar \
+	--module-path mods/owner.jar \
+	--add-modules owner \
+	--permit-illegal-access \
+	intruder.Intruder
+./delete-owner.sh
