@@ -1,7 +1,7 @@
 package intruder;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Module;
+import java.lang.Module;
 
 public class Intruder {
 
